@@ -9,16 +9,13 @@ export default factories.createCoreController(
   ({ strapi }) => ({
     async findOne(ctx) {
       const { id } = ctx.params;
-      const { query } = ctx;
-      if (!query.filters) query.filters = {};
-      query.filters = {
-        ...query.filters,
-        $or: [{ id: { $eq: id } }, { slug: { $eq: id } }],
-      };
-      const entity = await strapi.service("api::service.service").find(query);
+
+      const entity = await strapi.service("api::service.service").find({
+        where: { $or: [{ id }, { slug: id }] },
+      });
       const { results }: any = await this.sanitizeOutput(entity, ctx);
 
-      return this.transformResponse(results[0]);
+      return this.transformResponse(results);
     },
   })
 );
