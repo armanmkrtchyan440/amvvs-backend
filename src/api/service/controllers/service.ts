@@ -10,7 +10,7 @@ export default factories.createCoreController(
     async findOne(ctx) {
       const { id } = ctx.params;
 
-      const entity = await strapi.service("api::service.service").find({
+      const entity = await strapi.service("api::service.service").findOne({
         where: { $or: [{ id }, { slug: id }] },
       });
       const { results }: any = await this.sanitizeOutput(entity, ctx);
