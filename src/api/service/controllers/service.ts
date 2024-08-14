@@ -12,6 +12,9 @@ export default factories.createCoreController(
 
       const entity = await strapi.service("api::service.service").find({
         where: { $or: [{ id }, { slug: id }] },
+        populate: {
+          img: true,
+        },
       });
       const { results }: any = await this.sanitizeOutput(entity, ctx);
 
