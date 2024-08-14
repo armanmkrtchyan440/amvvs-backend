@@ -1,0 +1,5 @@
+/**
+ * quote service
+ */
+
+export default () => ({});
