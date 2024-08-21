@@ -964,46 +964,6 @@ export interface ApiJobJob extends Schema.CollectionType {
   };
 }
 
-export interface ApiRuleRule extends Schema.CollectionType {
-  collectionName: 'rules';
-  info: {
-    singularName: 'rule';
-    pluralName: 'rules';
-    displayName: 'Rule';
-    description: '';
-  };
-  options: {
-    draftAndPublish: true;
-  };
-  pluginOptions: {
-    i18n: {
-      localized: true;
-    };
-  };
-  attributes: {
-    rule: Attribute.Text &
-      Attribute.Required &
-      Attribute.SetPluginOptions<{
-        i18n: {
-          localized: true;
-        };
-      }>;
-    createdAt: Attribute.DateTime;
-    updatedAt: Attribute.DateTime;
-    publishedAt: Attribute.DateTime;
-    createdBy: Attribute.Relation<'api::rule.rule', 'oneToOne', 'admin::user'> &
-      Attribute.Private;
-    updatedBy: Attribute.Relation<'api::rule.rule', 'oneToOne', 'admin::user'> &
-      Attribute.Private;
-    localizations: Attribute.Relation<
-      'api::rule.rule',
-      'oneToMany',
-      'api::rule.rule'
-    >;
-    locale: Attribute.String;
-  };
-}
-
 export interface ApiServiceService extends Schema.CollectionType {
   collectionName: 'services';
   info: {
@@ -1022,13 +982,6 @@ export interface ApiServiceService extends Schema.CollectionType {
   };
   attributes: {
     name: Attribute.String &
-      Attribute.Required &
-      Attribute.SetPluginOptions<{
-        i18n: {
-          localized: true;
-        };
-      }>;
-    description: Attribute.Text &
       Attribute.Required &
       Attribute.SetPluginOptions<{
         i18n: {
@@ -1057,6 +1010,12 @@ export interface ApiServiceService extends Schema.CollectionType {
     >;
     bortforsling: Attribute.Decimal &
       Attribute.Required &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    description: Attribute.RichText &
       Attribute.SetPluginOptions<{
         i18n: {
           localized: true;
@@ -1107,7 +1066,6 @@ declare module '@strapi/types' {
       'api::blog.blog': ApiBlogBlog;
       'api::category.category': ApiCategoryCategory;
       'api::job.job': ApiJobJob;
-      'api::rule.rule': ApiRuleRule;
       'api::service.service': ApiServiceService;
     }
   }
