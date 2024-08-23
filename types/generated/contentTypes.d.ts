@@ -872,13 +872,6 @@ export interface ApiCategoryCategory extends Schema.CollectionType {
       'api::service.service'
     >;
     slug: Attribute.UID<'api::category.category', 'name'> & Attribute.Required;
-    description: Attribute.Text &
-      Attribute.Required &
-      Attribute.SetPluginOptions<{
-        i18n: {
-          localized: true;
-        };
-      }>;
     img: Attribute.Media &
       Attribute.Required &
       Attribute.SetPluginOptions<{
