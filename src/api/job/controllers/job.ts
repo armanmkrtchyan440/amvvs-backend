@@ -20,17 +20,16 @@ export default factories.createCoreController("api::job.job", ({ strapi }) => ({
       .plugin("email")
       .service("email")
       .send({
-        to: "armanmkrtchyan440@gmail.com",
-        subject: "Job",
-        text: "Job",
+        subject: "Jobb",
+        text: "Jobb",
         html: `<div>
           <h2>Job Data</h2>
           <div>
-            <h3>Name: ${name}</h3>
-            <h3>Email: <a href="mailto:${email}">${email}</a></h3>
-            <h3>Phone: <a href="tel:${phone}">${phone}</a></h3>
+            <h3>Namn: ${name}</h3>
+            <h3>E-postadress: <a href="mailto:${email}">${email}</a></h3>
+            <h3>Telefon: <a href="tel:${phone}">${phone}</a></h3>
             <div>
-              <h3>Cover Letter</h3>
+              <h3>Personlig brev</h3>
               <p>${message}</p>
             </div>
           </div>

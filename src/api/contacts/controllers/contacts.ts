@@ -32,17 +32,16 @@ export default {
         .plugin("email")
         .service("email")
         .send({
-          to: "armanmkrtchyan440@gmail.com",
-          subject: "Contacts",
-          text: "Contacts",
+          subject: "Offert",
+          text: "Offert",
           html: `<div>
-          <h2>Contacts data</h2>
+          <h2>Noteringsuppgifter</h2>
           <div>
-            <h3>Name: ${name}</h3>
-            <h3>Email: <a href="mailto:${email}">${email}</a></h3>
-            <h3>Phone: <a href="tel:${phone}">${phone}</a></h3>
+            <h3>Namn: ${name}</h3>
+            <h3>E-postadress: <a href="mailto:${email}">${email}</a></h3>
+            <h3>Telefon: <a href="tel:${phone}">${phone}</a></h3>
             <div>
-              <h3>Message</h3>
+              <h3>Meddelande</h3>
               <p>${message}</p>
             </div>
           </div>

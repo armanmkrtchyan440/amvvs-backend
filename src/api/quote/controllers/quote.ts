@@ -50,10 +50,10 @@ export default {
         const price = rot ? calculateRot(service.price) : service.price;
         servicesHtml += `
           <li>
-            <h3>name: ${service.name}</h3>
-            <h3>price: ${price} - ${rot && "(Efter ROT)"}</h3>
-            <h3>quantity: ${service.quantity}</h3>
-            <h3>total: ${price * service.quantity}</h3>
+            <h3>namn: ${service.name}</h3>
+            <h3>pris: ${price} - ${rot && "(Efter ROT)"}</h3>
+            <h3>mängd: ${service.quantity}</h3>
+            <h3>totalt: ${price * service.quantity}</h3>
           </li>
         `;
         total += price * service.quantity;
@@ -63,27 +63,26 @@ export default {
         .plugin("email")
         .service("email")
         .send({
-          to: "armanmkrtchyan440@gmail.com",
-          subject: "Hello world",
-          text: "New Quote",
+          subject: "Citat",
+          text: "Nytt citat",
           html: `<div>
-          <h2>Quote data</h2>
+          <h2>Offertdata</h2>
           <div>
-            <h3>First name: ${firstName}</h3>
-            <h3>Last name: ${lastName}</h3>
-            <h3>Email: <a href="mailto:${email}">${email}</a></h3>
-            <h3>Phone: <a href="tel:${phone}">${phone}</a></h3>
+            <h3>Förnamn: ${firstName}</h3>
+            <h3>Efternamn: ${lastName}</h3>
+            <h3>E-postadress: <a href="mailto:${email}">${email}</a></h3>
+            <h3>Telefon: <a href="tel:${phone}">${phone}</a></h3>
             <div>
-              <h3>Services</h3>
+              <h3>Tjänster</h3>
               <ul>
                 ${servicesHtml}
               </ul>
               <div>
-                <h3>Subtotal: ${total}</h3>
+                <h3>Totalbelopp: ${total}</h3>
               </div>
             </div>
             <div>
-              <h3>Message</h3>
+              <h3>Meddelande</h3>
               <p>${message}</p>
             </div>
           </div>
