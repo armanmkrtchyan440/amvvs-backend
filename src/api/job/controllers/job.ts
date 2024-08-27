@@ -20,6 +20,7 @@ export default factories.createCoreController("api::job.job", ({ strapi }) => ({
       .plugin("email")
       .service("email")
       .send({
+        to: process.env.SMTP_USERNAME,
         subject: "Jobb",
         text: "Jobb",
         html: `<div>
