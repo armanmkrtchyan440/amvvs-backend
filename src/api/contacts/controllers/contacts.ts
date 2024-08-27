@@ -32,6 +32,7 @@ export default {
         .plugin("email")
         .service("email")
         .send({
+          to: process.env.SMTP_USERNAME,
           subject: "Offert",
           text: "Offert",
           html: `<div>

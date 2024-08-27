@@ -63,6 +63,7 @@ export default {
         .plugin("email")
         .service("email")
         .send({
+          to: process.env.SMTP_USERNAME,
           subject: "Citat",
           text: "Nytt citat",
           html: `<div>
