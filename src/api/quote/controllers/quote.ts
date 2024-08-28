@@ -32,7 +32,7 @@ export default {
         .body as QuoteBody;
       let files = ctx.request.files.files || [];
 
-      if (files.length == 1) {
+      if (!Array.isArray(files)) {
         files = [files];
       }
 

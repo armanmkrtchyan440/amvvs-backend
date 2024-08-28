@@ -17,16 +17,13 @@ export default {
       const { name, email, phone, message } = ctx.request.body as ContactsBody;
       let files = ctx.request.files.files || [];
 
-      if (files.length == 1) {
+      if (!Array.isArray(files)) {
         files = [files];
       }
 
       const attachments = files.map((file) => {
         return { filename: file.name, contentType: file.type, path: file.path };
       }, []);
-
-      let servicesHtml = "";
-      let total = 0;
 
       await strapi
         .plugin("email")
