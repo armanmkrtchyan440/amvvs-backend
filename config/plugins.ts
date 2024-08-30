@@ -9,10 +9,9 @@ export default ({ env }) => ({
           user: env("SMTP_USERNAME"),
           pass: env("SMTP_PASSWORD"),
         },
-        // ... any custom nodemailer options
       },
       settings: {
-        defaultFrom: env("SMTP_USERNAME"),
+        defaultFrom: `AM VVS OCH BYGG AB <${env("SMTP_USERNAME")}>`,
         defaultReplyTo: env("SMTP_USERNAME"),
       },
     },

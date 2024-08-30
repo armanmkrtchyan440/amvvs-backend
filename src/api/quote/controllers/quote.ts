@@ -9,6 +9,8 @@ interface IService {
   img: string;
   slug: string;
   quantity: number;
+  bortforsling: number;
+  bortforslingQuantity: number;
 }
 
 interface QuoteBody {
@@ -53,6 +55,11 @@ export default {
             <h3>namn: ${service.name}</h3>
             <h3>pris: ${price} - ${rot && "(Efter ROT)"}</h3>
             <h3>mängd: ${service.quantity}</h3>
+            ${
+              service.bortforslingQuantity != 0
+                ? `<h3>Bortforsling: ${service.bortforslingQuantity}st - ${service.bortforsling}:-/st</h3>`
+                : ""
+            }
             <h3>totalt: ${price * service.quantity}</h3>
           </li>
         `;
