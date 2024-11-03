@@ -50,6 +50,18 @@ export default {
 
       services.forEach((service) => {
         const price = rot ? calculateRot(service.price) : service.price;
+        const bortforsling = rot
+          ? calculateRot(service.bortforsling)
+          : service.bortforsling;
+
+        const servicePrice = rot
+          ? calculateRot(
+              service.price * service.quantity +
+                service.bortforsling * service.bortforslingQuantity
+            )
+          : service.price * service.quantity +
+            service.bortforsling * service.bortforslingQuantity;
+
         servicesHtml += `
           <li>
             <h3>namn: ${service.name}</h3>
@@ -57,19 +69,20 @@ export default {
             <h3>mängd: ${service.quantity}</h3>
             ${
               service.bortforslingQuantity != 0
-                ? `<h3>Bortforsling: ${service.bortforslingQuantity}st - ${service.bortforsling}:-/st</h3>`
+                ? `<h3>Bortforsling: ${service.bortforslingQuantity}st - ${bortforsling}:-/st</h3>`
                 : ""
             }
-            <h3>totalt: ${price * service.quantity}</h3>
+            <h3>totalt: ${servicePrice}</h3>
           </li>
         `;
-        total += price * service.quantity;
+        total += servicePrice;
       });
 
       await strapi
         .plugin("email")
         .service("email")
         .send({
+          from: `${firstName} ${lastName}<${process.env.SMTP_USERNAME}>`,
           to: process.env.SMTP_USERNAME,
           subject: "Citat",
           text: "Nytt citat",
